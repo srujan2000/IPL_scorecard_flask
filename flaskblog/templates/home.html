@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{category}}">
+          {{message}}
+      </div>
+      {% endfor %}
+     {% endif %}
+    {% endwith %}  
+<h2 class="mb-5" style="margin-left: 400px; color: red;"><u>Matches</u></h2>
+{% for post in posts %}
+<div class="card mb-5" style="width: 50rem;margin-left:100px;background-color: #f0f073">
+    <small class="mr-auto ml-2">{{ post.date}}</small>
+    <a href="{{url_for('check_post',post_id = post.id)}}" style="text-decoration: none;"><h3 class="card-title text-center mt-2">{{post.match}} - {{post.teams}}</h3></a>
+    <small class="text-center">Venue: {{ post.venue}}</small>
+    <hr>
+    <div class="card-body text-center">
+       <div class="container">
+           <div class="row">
+               <div class="col-md-6">
+                    <h5 > 1st Innings</h5>
+                    <h3>{{post.firstinnings}}</h3>
+               </div>
+               <div class="col-md-6">
+                <h5> 2nd Innings</h5>
+                <h3>{{post.secondinnings}}</h3>
+            </div>
+           </div>
+           <h4 class="text-center mt-3">MOM: {{post.mom}}</h4>
+       </div>
+    </div>
+    <div class="card-footer text-center">
+       {{post.result}}
+      </div>
+  </div>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{category}}">
+          {{message}}
+      </div>
+      {% endfor %}
+     {% endif %}
+    {% endwith %}  
+ 
+  <div class="container">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card p-3">
+                  <div class="card-title">
+                      <h3>Match Post</h3>
+                      <hr>
+                  </div>
+              <div class="card-body">    
+              <form action="#" method="POST">
+                  {{ form.hidden_tag()}}
+                  <div class="form-group">
+                    {{ form.Title.label(class="form-control-label") }}
+
+                    {% if form.Title.errors %}
+                       {{ form.Title(class="form-control form-control-lg is-invalid")}}
+                       <div class="invalid-feedback">
+                           {% for error in form.Title.errors %}
+                            <span> {{error}}</span>
+                            {% endfor %}
+                        </div>  
+                    {% else %}
+                       {{ form.Title(class="form-control form-control-lg")}}
+                    {% endif %}
+                  </div>
+                  <div class="form-group">
+                        {{ form.Date.label(class="form-control-label") }}
+                        {% if form.Date.errors %}
+                           {{ form.Date(class="form-control form-control-lg is-invalid")}}
+                           <div class="invalid-feedback">
+                               {% for error in form.Date.errors %}
+                                <span> {{error}}</span>
+                                {% endfor %}
+                            </div>  
+                        {% else %}
+                        {{ form.Date(class="form-control")}}
+                        {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.Venue.label(class="form-control-label") }}
+                    {% if form.Venue.errors %}
+                       {{ form.Venue(class="form-control form-control-lg is-invalid")}}
+                       <div class="invalid-feedback">
+                           {% for error in form.Venue.errors %}
+                            <span> {{error}}</span>
+                            {% endfor %}
+                        </div>  
+                    {% else %}
+                    {{ form.Venue(class="form-control")}}
+                    {% endif %}
+            </div>
+                <div class="form-group">
+                    {{ form.Teams.label(class="form-control-label") }}
+                    {% if form.Teams.errors %}
+                       {{ form.Teams(class="form-control form-control-lg is-invalid")}}
+                       <div class="invalid-feedback">
+                           {% for error in form.Teams.errors %}
+                            <span> {{error}}</span>
+                            {% endfor %}
+                        </div>  
+                    {% else %}
+                    {{ form.Teams(class="form-control")}}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.First.label(class="form-control-label") }}
+                    {% if form.First.errors %}
+                       {{ form.First(class="form-control form-control-lg is-invalid")}}
+                       <div class="invalid-feedback">
+                           {% for error in form.First.errors %}
+                            <span> {{error}}</span>
+                            {% endfor %}
+                        </div>  
+                    {% else %}
+                    {{ form.First(class="form-control")}}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.Second.label(class="form-control-label") }}
+                    {% if form.Second.errors %}
+                       {{ form.Second(class="form-control form-control-lg is-invalid")}}
+                       <div class="invalid-feedback">
+                           {% for error in form.Second.errors %}
+                            <span> {{error}}</span>
+                            {% endfor %}
+                        </div>  
+                    {% else %}
+                    {{ form.Second(class="form-control")}}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.Result.label(class="form-control-label") }}
+                    {% if form.Result.errors %}
+                       {{ form.Result(class="form-control form-control-lg is-invalid")}}
+                       <div class="invalid-feedback">
+                           {% for error in form.Result.errors %}
+                            <span> {{error}}</span>
+                            {% endfor %}
+                        </div>  
+                    {% else %}
+                    {{ form.Result(class="form-control")}}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.MOM.label(class="form-control-label") }}
+                    {% if form.MOM.errors %}
+                       {{ form.MOM(class="form-control form-control-lg is-invalid")}}
+                       <div class="invalid-feedback">
+                           {% for error in form.MOM.errors %}
+                            <span> {{error}}</span>
+                            {% endfor %}
+                        </div>  
+                    {% else %}
+                    {{ form.MOM(class="form-control")}}
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                {{ form.Submit(class="btn btn-outline-success")}}
+                </div>
+              </form>
+              </div>
+            </div>  
+          </div>
+      </div>
+  </div>
+
+{% endblock content %}
